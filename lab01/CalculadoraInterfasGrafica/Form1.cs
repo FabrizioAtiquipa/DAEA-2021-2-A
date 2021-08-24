@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+//CALCULADORA CON INTERFAZ GRAFICA
+//FABRIZIO JAHIR ATIQUIPA MENDOZA
 namespace WindowsFormsApp2
 {
     public partial class Form1 : Form
