@@ -7,7 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+//DATAGRIDVIEW CON UN CRUD BASICO
+//FABRIZIO JAHIR ATIQUIPA MENDOZA
 namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
