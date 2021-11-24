@@ -1,0 +1,34 @@
+﻿@model Products
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">@Html.DisplayNameFor(model => model.ProductID) </label>
+    <label for="exampleFormControlInput1" class="form-label">@Html.LabelFor(model => model.ProductID) </label>
+</div>
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">@Html.DisplayNameFor(model => model.ProductName) </label>
+    <label for="exampleFormControlInput1" class="form-label">@Html.LabelFor(model => model.ProductName) </label>
+</div>
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">@Html.DisplayNameFor(model => model.QuantityPerUnit) </label>
+    <label for="exampleFormControlInput1" class="form-label">@Html.LabelFor(model => model.QuantityPerUnit) </label>
+</div>
+
+
+
+
+@using (Html.BeginForm())
+{
+    <div class="col-auto">
+        <input type="submit" class="btn btn-primary mb-3" value="Delete" />
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Retornar al Index", "Index")
+</div>
