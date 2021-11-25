@@ -1,24 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using System.Net;
-using System.Data.Entity;
 
 namespace Lab15.Controllers
 {
     public class ProductsController : Controller
     {
-        // GET: Products
-        // GET: Categories
-        #region Contexto
-
         private NORTHWNDEntities _contexto;
 
-        public NORTHWNDEntities contexto
+        public NORTHWNDEntities Contexto
         {
-            set { _contexto = value; }
+            set
+            {
+                _contexto = value;
+            }
             get
             {
                 if (_contexto == null)
@@ -26,27 +25,29 @@ namespace Lab15.Controllers
                 return _contexto;
             }
         }
-        #endregion
-
+        // GET: Categories
         public ActionResult Index()
         {
-            return View(contexto.Products.ToList());
+            return View(Contexto.Products.ToList());
         }
 
+        //GET
         public ActionResult Details(int id)
         {
-            var productos = from p in contexto.Products
+            var productos = from p in Contexto.Products
                             orderby p.ProductName ascending
                             where p.ProductID == id
                             select p;
             return View(productos.ToList());
         }
 
+        //GET
         public ActionResult Create()
         {
             return View();
         }
 
+        //POST
         [HttpPost]
         public ActionResult Create(Products nuevoProducto)
         {
@@ -54,9 +55,8 @@ namespace Lab15.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    contexto.Products.Add(nuevoProducto);
-                    contexto.SaveChanges();
-
+                    Contexto.Products.Add(nuevoProducto);
+                    Contexto.SaveChanges();
                     return RedirectToAction("Index");
                 }
                 return View(nuevoProducto);
@@ -67,53 +67,62 @@ namespace Lab15.Controllers
             }
         }
 
+
+        //GET
         public ActionResult Edit(int? id)
         {
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            Products productoEditar = contexto.Products.Find(id);
+            //Buscar por categoria a editar
+            Products ProductoEditar = Contexto.Products.Find(id);
 
-            if (productoEditar == null)
+            //Si la entidad es NULO (categoria no existe)
+            if (ProductoEditar == null)
                 return HttpNotFound();
 
-            return View(productoEditar);
+            return View(ProductoEditar);
         }
 
         [HttpPost]
         public ActionResult Edit(Products ProductoEditar)
         {
+
             try
             {
                 if (ModelState.IsValid)
                 {
-                    contexto.Entry(ProductoEditar).State = EntityState.Modified;
-                    contexto.SaveChanges();
-
+                    Contexto.Entry(ProductoEditar).State = EntityState.Modified;
+                    Contexto.SaveChanges();
                     return RedirectToAction("Index");
                 }
                 return View(ProductoEditar);
             }
-            catch
+            catch (Exception e)
             {
+                throw e;
                 return View();
             }
         }
 
-
+        //GET
         public ActionResult Delete(int? id)
         {
             if (id == null)
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            Products productoEliminar = contexto.Products.Find(id);
+            //Buscar por categoria a editar
+            Products ProductoEliminar = Contexto.Products.Find(id);
 
-            if (productoEliminar == null)
+            //Si la entidad es NULO (categoria no existe)
+            if (ProductoEliminar == null)
                 return HttpNotFound();
 
-            return View(productoEliminar);
+            return View(ProductoEliminar);
         }
 
+        //POST
+        [HttpPost]
         public ActionResult Delete(int? id, Products Producto1)
         {
             try
@@ -124,14 +133,16 @@ namespace Lab15.Controllers
                     if (id == null)
                         return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-                    ProductoEliminar = contexto.Products.Find(id);
+                    //busca categoria a eliminar
+                    ProductoEliminar = Contexto.Products.Find(id);
 
+                    //Si no encuentra la categoria
                     if (ProductoEliminar == null)
                         return HttpNotFound();
 
-                    contexto.Products.Remove(ProductoEliminar);
-                    contexto.SaveChanges();
-
+                    //Elimina la categoria
+                    Contexto.Products.Remove(ProductoEliminar);
+                    Contexto.SaveChanges();
                     return RedirectToAction("Index");
                 }
                 return View(ProductoEliminar);
@@ -141,6 +152,5 @@ namespace Lab15.Controllers
                 return View();
             }
         }
-
     }
 }

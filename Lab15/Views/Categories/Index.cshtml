@@ -1,47 +1,82 @@
-﻿
-@model IEnumerable<Lab15.Categories>
+﻿@model IEnumerable<Lab15.Categories>
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+@section Styles{
+    <link href="~/lib/datatables.net-bs4/dataTables.bootstrap4.min.css" rel="stylesheet" />
+}
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+            <h4 class="mb-sm-0 font-size-18">Lista de Categorias</h4>
+        </div>
+    </div>
+</div>
+
+
 <p>
-    @Html.ActionLink("Nueva Categoria", "Create")
+    <!--Hipervínculo nombre, método-->
+    @*Html.ActionLink("Nueva Categoria", "Create")*@
 </p>
-<table class="table table-dark table-striped">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
 
-        </th>
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.CategoryID }) |
-                @Html.ActionLink("Detalles", "Details", new { id = item.CategoryID }) |
-                @Html.ActionLink("Borrar", "Delete", new { id = item.CategoryID })
-            </td>
-        </tr>
-    }
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="float-end mb-1">
+                    <p>
+                        @Html.ActionLink("Nueva Categoria", "Create", null,
+                                            new { @class = "btn btn-sm btn-primary" })
+                    </p>
+                </div>
+            </div>
 
-</table>
+            <div class="card-body">
+
+                <div class="table-responsive">
+                    <table id="tblLista" class="table table-sm table-bordered table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.CategoryID)</th>
+                                <th>@Html.DisplayNameFor(model => model.CategoryName)</th>
+                                <th>@Html.DisplayNameFor(model => model.Description)</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var categoria in Model)
+                            {
+                                <tr>
+                                    <th>@Html.DisplayFor(modelItem => categoria.CategoryID)</th>
+                                    <td>@Html.DisplayFor(modelItem => categoria.CategoryName)</td>
+                                    <td>@Html.DisplayFor(modelItem => categoria.Description)</td>
+                                    <td>
+                                        <!--Hipervinculo nombre, método-->
+                                        @Html.ActionLink("Editar", "Edit",
+                                            new { id = categoria.CategoryID }) |
+
+                                        @Html.ActionLink("Detalles", "Details",
+                                            new { id = categoria.CategoryID }) |
+
+                                        @Html.ActionLink("Borrar", "Delete",
+                                            new { id = categoria.CategoryID })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
 
