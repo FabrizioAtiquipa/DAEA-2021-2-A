@@ -3,34 +3,100 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Create</h2>
-@using (Html.BeginForm())
-{
-    @Html.ValidationSummary(true)
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">@Html.LabelFor(model => model.P) </label>
-        @Html.EditorFor(model => model.CategoryID)
-        @Html.ValidationMessageFor(model => model.CategoryID)
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box d-sm-flex align-items-center justify-content-between">
+            <h4 class="mb-sm-0 font-size-18"><i class="fas fa-table"></i> Editar Producto</h4>
+        </div>
     </div>
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">@Html.LabelFor(model => model.CategoryName) </label>
-        @Html.EditorFor(model => model.CategoryName)
-        @Html.ValidationMessageFor(model => model.CategoryName)
-    </div>
-
-    <div class="mb-3">
-        <label for="exampleFormControlInput1" class="form-label">@Html.LabelFor(model => model.Description) </label>
-        @Html.EditorFor(model => model.Description)
-        @Html.ValidationMessageFor(model => model.Description)
-    </div>
-
-    <div class="col-auto">
-        <input type="submit" class="btn btn-primary mb-3" value="Save" />
-    </div>
-
-}
-
-<div>
-    @Html.ActionLink("Retornar al Index", "Index")
 </div>
 
+<br />
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+
+            <div class="card-body">
+                <form asp-action="Edit" method="post">
+                    <div class="form-horizontal">
+
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="form-group row" style="margin-bottom:1rem;">
+                            <label asp-for="CategoryID" class="col-form-label col-md-2" style="color:black">ID</label>
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.ProductID,
+                                    new { htmlAttributes = new { @class = "form-control" } })
+
+                                @Html.ValidationMessageFor(model => model.CategoryID)
+                            </div>
+                        </div>
+
+                        <div class="form-group row" style="margin-bottom:1rem;">
+                            <label asp-for="ProductName" class="col-form-label col-md-2" style="color:black">Nombre</label>
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ProductName)
+                            </div>
+                        </div>
+
+                        <div class="form-group row" style="margin-bottom:1rem;">
+                            <label asp-for="Description" class="col-form-label col-md-2">Proveedor ID</label>
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.SupplierID, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.SupplierID)
+                            </div>
+                        </div>
+
+                        <div class="form-group row" style="margin-bottom:1rem;">
+                            <label asp-for="ProductName" class="col-form-label col-md-2" style="color:black">Categoria ID</label>
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.CategoryID, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CategoryID)
+                            </div>
+                        </div>
+
+                        <div class="form-group row" style="margin-bottom:1rem;">
+                            <label asp-for="ProductName" class="col-form-label col-md-2" style="color:black">Cantidad X Unidad</label>
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.QuantityPerUnit, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.QuantityPerUnit)
+                            </div>
+                        </div>
+
+                        <div class="form-group row" style="margin-bottom:1rem;">
+                            <label asp-for="ProductName" class="col-form-label col-md-2" style="color:black">Precio Unitario</label>
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.UnitPrice, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.UnitPrice)
+                            </div>
+                        </div>
+
+                        <div class="form-group row" style="margin-bottom:1rem;">
+                            <label asp-for="ProductName" class="col-form-label col-md-2" style="color:black">Stock</label>
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.UnitsInStock, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.UnitsInStock)
+                            </div>
+                        </div>
+
+                        <div class="form-group row" style="margin-bottom:1rem;">
+                            <label asp-for="ProductName" class="col-form-label col-md-2" style="color:black">Unidades ordenadas</label>
+                            <div class="col-md-6">
+                                @Html.EditorFor(model => model.UnitsOnOrder, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.UnitsOnOrder)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" value="Editar"  /> |
+                            <a  style="text-decoration: none" href="~/Products">Cancelar</a>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
