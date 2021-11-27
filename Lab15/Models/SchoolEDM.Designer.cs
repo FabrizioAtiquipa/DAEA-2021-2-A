@@ -1,4 +1,4 @@
-﻿// La generación de código T4 está habilitada para el modelo 'C:\Users\USER\Desktop\6-semestre\DESARROLLO DE APLICACIONES EMPRESARIALES AVANZADO\Codigos\DAEA-2021-2-A\Lab15\NorthwindEntities.edmx'. 
+﻿// La generación de código T4 está habilitada para el modelo 'C:\Users\USER\Desktop\6-semestre\DESARROLLO DE APLICACIONES EMPRESARIALES AVANZADO\Codigos\DAEA-2021-2-A\Lab15\Models\SchoolEDM.edmx'. 
 // Para habilitar la generación de código heredada, cambie el valor de la propiedad del diseñador 'Estrategia de generación de código'
 // por 'ObjectContext heredado'. Esta propiedad está disponible en la ventana Propiedades cuando se abre
 // el modelo en el diseñador.

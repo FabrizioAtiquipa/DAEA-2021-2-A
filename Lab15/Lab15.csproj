@@ -7,7 +7,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{FA058FA6-19D8-49DD-8AE8-9D529F49B6D5}</ProjectGuid>
+    <ProjectGuid>{55DFD25C-60BF-4E81-8266-8F4E10FE7346}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -16,7 +16,7 @@
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44385</IISExpressSSLPort>
+    <IISExpressSSLPort>44358</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -50,6 +50,16 @@
       <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.ProcessingObjectModel.DLL</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Report.Viewer.11.0.0.0\lib\net\Microsoft.ReportViewer.WebForms.DLL</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -98,99 +108,102 @@
   <ItemGroup>
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
-    <Content Include="NorthwindEntities.Context.tt">
+    <Content Include="Models\SchoolEDM.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>NorthwindEntities.Context.cs</LastGenOutput>
-      <DependentUpon>NorthwindEntities.edmx</DependentUpon>
+      <LastGenOutput>SchoolEDM.Context.cs</LastGenOutput>
+      <DependentUpon>SchoolEDM.edmx</DependentUpon>
     </Content>
-    <Content Include="NorthwindEntities.tt">
+    <Content Include="Models\SchoolEDM.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>NorthwindEntities.edmx</DependentUpon>
-      <LastGenOutput>NorthwindEntities.cs</LastGenOutput>
+      <DependentUpon>SchoolEDM.edmx</DependentUpon>
+      <LastGenOutput>SchoolEDM.cs</LastGenOutput>
     </Content>
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Categories.cs">
-      <DependentUpon>NorthwindEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Controllers\CategoriesController.cs" />
-    <Compile Include="Controllers\ProductsController.cs" />
-    <Compile Include="CustomerDemographics.cs">
-      <DependentUpon>NorthwindEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Customers.cs">
-      <DependentUpon>NorthwindEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Employees.cs">
-      <DependentUpon>NorthwindEntities.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Controllers\PersonController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="NorthwindEntities.Context.cs">
+    <Compile Include="Models\BuscarCursoNombre_Result.cs">
+      <DependentUpon>SchoolEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BuscarPersonaNombre_Result.cs">
+      <DependentUpon>SchoolEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Course.cs">
+      <DependentUpon>SchoolEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CourseGrade.cs">
+      <DependentUpon>SchoolEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Department.cs">
+      <DependentUpon>SchoolEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GetStudentGrades_Result.cs">
+      <DependentUpon>SchoolEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OfficeAssignment.cs">
+      <DependentUpon>SchoolEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OnlineCourse.cs">
+      <DependentUpon>SchoolEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OnsiteCourse.cs">
+      <DependentUpon>SchoolEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Person.cs">
+      <DependentUpon>SchoolEDM.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SchoolEDM.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>NorthwindEntities.Context.tt</DependentUpon>
+      <DependentUpon>SchoolEDM.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="NorthwindEntities.cs">
+    <Compile Include="Models\SchoolEDM.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>NorthwindEntities.tt</DependentUpon>
+      <DependentUpon>SchoolEDM.tt</DependentUpon>
     </Compile>
-    <Compile Include="NorthwindEntities.Designer.cs">
+    <Compile Include="Models\SchoolEDM.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>NorthwindEntities.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Orders.cs">
-      <DependentUpon>NorthwindEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Order_Details.cs">
-      <DependentUpon>NorthwindEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Products.cs">
-      <DependentUpon>NorthwindEntities.tt</DependentUpon>
+      <DependentUpon>SchoolEDM.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Region.cs">
-      <DependentUpon>NorthwindEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Shippers.cs">
-      <DependentUpon>NorthwindEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Suppliers.cs">
-      <DependentUpon>NorthwindEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagrams.cs">
-      <DependentUpon>NorthwindEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Territories.cs">
-      <DependentUpon>NorthwindEntities.tt</DependentUpon>
+    <Compile Include="SchoolDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SchoolDataSet.xsd</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
-    <EntityDeploy Include="NorthwindEntities.edmx">
+    <EntityDeploy Include="Models\SchoolEDM.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>NorthwindEntities.Designer.cs</LastGenOutput>
+      <LastGenOutput>SchoolEDM.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="NorthwindEntities.edmx.diagram">
-      <DependentUpon>NorthwindEntities.edmx</DependentUpon>
+    <Content Include="Models\SchoolEDM.edmx.diagram">
+      <DependentUpon>SchoolEDM.edmx</DependentUpon>
     </Content>
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Categories\Index.cshtml" />
-    <Content Include="Views\Categories\Create.cshtml" />
-    <Content Include="Views\Categories\Edit.cshtml" />
-    <Content Include="Views\Categories\Delete.cshtml" />
-    <Content Include="Views\Categories\Details.cshtml" />
-    <Content Include="Views\Products\Index.cshtml" />
-    <Content Include="Views\Products\Create.cshtml" />
-    <Content Include="Views\Products\Delete.cshtml" />
-    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Person\Index.cshtml" />
+    <Content Include="Views\Person\Reporte.cshtml" />
+    <Content Include="SchoolDataSet.xsc">
+      <DependentUpon>SchoolDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="SchoolDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SchoolDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="SchoolDataSet.xss">
+      <DependentUpon>SchoolDataSet.xsd</DependentUpon>
+    </Content>
+    <Content Include="Views\Person\Graficos.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -200,10 +213,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reporte.rdlc" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -218,9 +233,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50474</DevelopmentServerPort>
+          <DevelopmentServerPort>65021</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44385/</IISUrl>
+          <IISUrl>https://localhost:44358/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

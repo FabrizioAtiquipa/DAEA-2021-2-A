@@ -7,23 +7,26 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Lab15
+namespace Lab15.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Region
+    public partial class Department
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Region()
+        public Department()
         {
-            this.Territories = new HashSet<Territories>();
+            this.Course = new HashSet<Course>();
         }
     
-        public int RegionID { get; set; }
-        public string RegionDescription { get; set; }
+        public int DepartmentID { get; set; }
+        public string Name { get; set; }
+        public decimal Budget { get; set; }
+        public System.DateTime StartDate { get; set; }
+        public Nullable<int> Administrator { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Territories> Territories { get; set; }
+        public virtual ICollection<Course> Course { get; set; }
     }
 }

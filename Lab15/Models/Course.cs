@@ -7,25 +7,31 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Lab15
+namespace Lab15.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Territories
+    public partial class Course
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Territories()
+        public Course()
         {
-            this.Employees = new HashSet<Employees>();
+            this.CourseGrade = new HashSet<CourseGrade>();
+            this.Person = new HashSet<Person>();
         }
     
-        public string TerritoryID { get; set; }
-        public string TerritoryDescription { get; set; }
-        public int RegionID { get; set; }
+        public int CourseID { get; set; }
+        public string Title { get; set; }
+        public int Credits { get; set; }
+        public int DepartmentID { get; set; }
     
-        public virtual Region Region { get; set; }
+        public virtual Department Department { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employees> Employees { get; set; }
+        public virtual ICollection<CourseGrade> CourseGrade { get; set; }
+        public virtual OnlineCourse OnlineCourse { get; set; }
+        public virtual OnsiteCourse OnsiteCourse { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Person> Person { get; set; }
     }
 }
